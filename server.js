@@ -27,7 +27,6 @@ mongoose
   .then((con) => {
     // console.log(con.connections);
     console.log('db connection successfull');
-    console.log(__dirname)
   })
   .catch((err) => {
     console.log('error in db connection', err);

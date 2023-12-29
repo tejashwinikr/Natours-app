@@ -7,6 +7,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const path = require('path');
 const cookieParser = require('cookie-parser'); //npm i cookie-parser lesson189
+const compression = require('compression'); //npm i compression,lesson 222
 
 const AppError = require('./app/utils/appError');
 const globalErrorHandler = require('./app/controllers/errorContoller');
@@ -75,6 +76,9 @@ app.use(
   }),
 );
 
+//lesson 222 , compressing the text sent in response
+app.use(compression);
+
 //using middleware applies to all apis
 // but wont work if we define it after the api route
 //orders really matters in express
@@ -86,7 +90,7 @@ app.use(
 //miidleware to manipulate request.test middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-  console.log(req.cookies);
+  // console.log(req.cookies);
   next();
 });
 

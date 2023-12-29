@@ -174,7 +174,7 @@ exports.getMonthlyPlan = catchAsync(async (req, res, next) => {
     },
   ]);
 
-  console.log('year', plan);
+  // console.log('year', plan);
   res.status(200).json({
     status: 'success',
     data: {
