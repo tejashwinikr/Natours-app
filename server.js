@@ -54,9 +54,10 @@ process.on('unhandledRejection', (err) => {
   //process.exit(1)//0 for suceess . 1 for unhandle rejection
 });
 
-process.on('SIGTERM',()=>{
-  console.log("in server 58 line SIGTERM RECEIVED.shutting down gracefully")
-  server.close(()=>{
-    console.log('Process terminated')
-  })
-})
+//prod changes lesson 225
+// process.on('SIGTERM',()=>{
+//   console.log("in server 58 line SIGTERM RECEIVED.shutting down gracefully")
+//   server.close(()=>{
+//     console.log('Process terminated')
+//   })
+// })
