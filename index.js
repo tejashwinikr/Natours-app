@@ -23,6 +23,21 @@ const cors = require('cors');
 
 app.use(cors());
 
+// 1) GLOBAL MIDDLEWARES lesson 226
+// Implement CORS
+// app.use(cors());
+// Access-Control-Allow-Origin *
+// api.natours.com, front-end natours.com
+// app.use(cors({
+//   origin: 'https://www.natours.com'
+// }))
+
+// app.options('*', cors());
+// app.options('/api/v1/tours/:id', cors());
+
+//lesson 224
+app.enable('trust proxy');
+
 //npm i pug lesson 176
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, './app/views'));
@@ -77,7 +92,7 @@ app.use(
 );
 
 //lesson 222 , compressing the text sent in response
-app.use(compression);
+// app.use(compression);
 
 //using middleware applies to all apis
 // but wont work if we define it after the api route
