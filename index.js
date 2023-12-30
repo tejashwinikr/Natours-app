@@ -16,6 +16,7 @@ const userRouter = require('./app/routes/userRoutes');
 const reviewRouter = require('./app/routes/reviewRoutes');
 const viewRouter = require('./app/routes/viewRoute');
 const bookingRouter = require('./app/routes/bookingRoutes');
+const bokkingController = require('./app/controllers/bookingController');
 
 const app = express();
 
@@ -62,6 +63,13 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP,Please try again in an hour',
 });
 app.use('/api', limiter);
+
+//leeson 227,on deployment  express.raw instead of bodyparser.raw
+app.post(
+  './webhook-checkout',
+  express.raw({ type: 'application/json' }),
+  bokkingController.webhookCheckout,
+);
 
 //gives api route ,timetook,statuscode
 app.use(morgan('dev'));
