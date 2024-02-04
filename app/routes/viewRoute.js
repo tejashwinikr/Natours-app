@@ -5,6 +5,8 @@ const bookingController = require('../controllers/bookingController');
 
 const router = express.Router();
 
+router.use(viewController.alerts);
+
 router.get('/', authController.isLoggedIn, viewController.getOverview);
 
 router.get('/tour/:slug', authController.isLoggedIn, viewController.getTour);
@@ -15,14 +17,13 @@ router.get(
   '/my-tours',
   bookingController.createBookingCheckout,
   authController.protect,
-  viewController.getMyTours
+  viewController.getMyTours,
 );
 
 router.post(
   '/submit-user-data',
   authController.protect,
-  viewController.updateUserData
+  viewController.updateUserData,
 );
 
 module.exports = router;
-
